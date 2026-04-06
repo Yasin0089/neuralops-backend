@@ -1,30 +1,14 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-
-import clientsRoute from "./routes/clients.js";
-import agentsRoute from "./routes/agents.js";
-import proposalRoute from "./routes/proposal.js";
-
-dotenv.config();
-
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-
-app.use("/api/clients", clientsRoute);
-app.use("/api/agents", agentsRoute);
-app.use("/api/proposal", proposalRoute);
-
-app.get("/", (req, res) => {
-  res.send("NeuralOps Backend Running 🚀");
-});
+import express from 'express';
+const app = express(); // <--- THIS LINE IS MISSING OR BELOW THE LISTEN CALL
 
 const PORT = process.env.PORT || 3001;
+
+// (Optional) Add a basic route so you can see it working
+app.get('/', (req, res) => {
+  res.send('NeuralOps Backend is LIVE 🚀');
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-  console.log("Server running on port 3001");
-});
+
